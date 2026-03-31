@@ -132,11 +132,31 @@ function runAway() {
     const margin = 20
     const btnW = noBtn.offsetWidth
     const btnH = noBtn.offsetHeight
-    const maxX = window.innerWidth - btnW - margin
-    const maxY = window.innerHeight - btnH - margin
-
-    const randomX = Math.random() * maxX + margin / 2
-    const randomY = Math.random() * maxY + margin / 2
+    
+    // Get Yes button position and size to avoid overlapping
+    const yesBtnRect = yesBtn.getBoundingClientRect()
+    const excludeZone = {
+        left: yesBtnRect.left - 30,
+        right: yesBtnRect.right + 30,
+        top: yesBtnRect.top - 30,
+        bottom: yesBtnRect.bottom + 30
+    }
+    
+    let randomX, randomY, attempts = 0
+    const maxAttempts = 10
+    
+    // Keep generating position until No button doesn't overlap with Yes button
+    do {
+        randomX = Math.random() * (window.innerWidth - btnW - margin) + margin / 2
+        randomY = Math.random() * (window.innerHeight - btnH - margin) + margin / 2
+        attempts++
+    } while (
+        attempts < maxAttempts &&
+        randomX < excludeZone.right &&
+        randomX + btnW > excludeZone.left &&
+        randomY < excludeZone.bottom &&
+        randomY + btnH > excludeZone.top
+    )
 
     noBtn.style.position = 'fixed'
     noBtn.style.left = `${randomX}px`
