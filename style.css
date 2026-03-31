@@ -53,22 +53,25 @@ body {
     position: relative;
     z-index: 1;
     text-align: center;
-    padding: 60px 30px;
+    padding: 40px 20px;
+    width: 90%;
     max-width: 500px;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
-    border-radius: 32px;
+    border-radius: 24px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 h1 {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     color: #2d1b2e;
     font-weight: 800;
     margin-bottom: 12px;
     letter-spacing: -0.5px;
     animation: glow 2.5s ease-in-out infinite;
+    word-wrap: break-word;
+    line-height: 1.3;
 }
 
 @keyframes glow {
@@ -77,14 +80,14 @@ h1 {
 }
 
 .gif-container {
-    margin: 30px auto;
+    margin: 20px auto;
     display: flex;
     justify-content: center;
 }
 
 #cat-gif {
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     object-fit: contain;
     filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.12));
     transition: transform 0.3s ease;
@@ -96,29 +99,37 @@ h1 {
 
 .buttons {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 30px;
     flex-wrap: wrap;
     flex-direction: column;
+    width: 100%;
 }
 
 #yes-btn {
     background: linear-gradient(135deg, #dc68a2 0%, #c9587a 100%);
     color: white;
     border: none;
-    border-radius: 20px;
-    font-size: 1.3rem;
+    border-radius: 18px;
+    font-size: 1.1rem;
     font-weight: 700;
     font-family: 'Nunito', sans-serif;
-    padding: 16px 50px;
+    padding: 14px 40px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 10px 30px rgba(220, 104, 162, 0.3);
     letter-spacing: 0.3px;
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #yes-btn:hover {
@@ -134,16 +145,17 @@ h1 {
     background: transparent;
     color: #6b7280;
     border: 2px solid #e5e7eb;
-    border-radius: 16px;
-    font-size: 1rem;
+    border-radius: 14px;
+    font-size: 0.95rem;
     font-weight: 600;
     font-family: 'Nunito', sans-serif;
-    padding: 12px 32px;
+    padding: 10px 28px;
     cursor: pointer;
     transition: all 0.2s;
     box-shadow: none;
     width: auto;
-    min-width: 80px;
+    min-width: 70px;
+    min-height: 40px;
 }
 
 #no-btn:hover {
@@ -154,15 +166,16 @@ h1 {
 
 
 #tease-toast {
-    margin-top: 18px;
-    font-size: 0.95rem;
+    margin-top: 14px;
+    font-size: 0.85rem;
     color: #c9587a;
     font-weight: 600;
     opacity: 0;
     transform: translateY(8px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    min-height: 1.5rem;
+    min-height: 1.2rem;
     letter-spacing: 0.2px;
+    word-wrap: break-word;
 }
 
 #tease-toast.show {
@@ -173,19 +186,20 @@ h1 {
 /* Music toggle button */
 #music-toggle {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     background: white;
     border: none;
     border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    font-size: 1.3rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
     cursor: pointer;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     transition: transform 0.2s, box-shadow 0.2s;
     z-index: 100;
+    flex-shrink: 0;
 }
 
 #music-toggle:hover {
@@ -195,7 +209,7 @@ h1 {
 
 /* Yes page specific */
 .yes-container h1.yes-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     animation: bounceTitle 0.7s ease infinite alternate;
 }
 
@@ -205,10 +219,10 @@ h1 {
 }
 
 .yes-message {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: #dc68a2;
     font-weight: 700;
-    margin-top: 24px;
+    margin-top: 20px;
     animation: fadeIn 1s ease 0.4s both;
 }
 
@@ -218,6 +232,98 @@ h1 {
 }
 
 .yes-container #cat-gif {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
+}
+
+/* Tablet and above */
+@media (min-width: 640px) {
+    .container {
+        padding: 50px 35px;
+        border-radius: 28px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    #cat-gif {
+        width: 160px;
+        height: 160px;
+    }
+
+    .gif-container {
+        margin: 25px auto;
+    }
+
+    #yes-btn {
+        font-size: 1.15rem;
+        padding: 15px 45px;
+        max-width: 300px;
+    }
+
+    #tease-toast {
+        font-size: 0.9rem;
+    }
+
+    #music-toggle {
+        width: 54px;
+        height: 54px;
+        font-size: 1.3rem;
+        bottom: 25px;
+        right: 25px;
+    }
+}
+
+/* Desktop and above */
+@media (min-width: 1024px) {
+    .container {
+        padding: 60px 40px;
+        max-width: 520px;
+        border-radius: 32px;
+    }
+
+    h1 {
+        font-size: 2.1rem;
+    }
+
+    #cat-gif {
+        width: 180px;
+        height: 180px;
+    }
+
+    .gif-container {
+        margin: 30px auto;
+    }
+
+    #yes-btn {
+        font-size: 1.3rem;
+        padding: 16px 50px;
+        max-width: 320px;
+    }
+
+    #tease-toast {
+        font-size: 0.95rem;
+    }
+
+    #music-toggle {
+        width: 56px;
+        height: 56px;
+        font-size: 1.3rem;
+        bottom: 30px;
+        right: 30px;
+    }
+
+    .yes-container h1.yes-title {
+        font-size: 2.5rem;
+    }
+
+    .yes-message {
+        font-size: 1.3rem;
+    }
+
+    .yes-container #cat-gif {
+        width: 220px;
+        height: 220px;
+    }
 }
