@@ -5,20 +5,16 @@
 }
 
 body {
-    background-color: #FFE4E8;
+    background: linear-gradient(135deg, #f8f6f2 0%, #f5ede4 100%);
     font-family: 'Nunito', sans-serif;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-image:
-        radial-gradient(circle at 15% 85%, #ffb3c1 0%, transparent 40%),
-        radial-gradient(circle at 85% 15%, #ff8fa3 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, #fff0f3 0%, transparent 60%);
 }
 
-/* Floating hearts background */
+/* Floating hearts background - subtle and elegant */
 .hearts-bg {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -27,126 +23,146 @@ body {
     overflow: hidden;
 }
 
-.hearts-bg::before,
-.hearts-bg::after {
-    content: '💕 💗 💖 💝 💓';
+.hearts-bg::before {
+    content: '💕';
     position: absolute;
-    font-size: 1.5rem;
-    opacity: 0.15;
-    animation: floatHearts 12s linear infinite;
-    white-space: nowrap;
+    font-size: 2rem;
+    opacity: 0.08;
+    animation: floatHearts 15s linear infinite;
     top: 100%;
     left: 10%;
 }
 
 .hearts-bg::after {
-    animation-delay: 6s;
-    left: 60%;
-    content: '💗 💕 💓 💖 💝';
+    content: '💗';
+    position: absolute;
+    font-size: 2.5rem;
+    opacity: 0.06;
+    animation: floatHearts 18s linear infinite;
+    animation-delay: 7s;
+    top: 100%;
+    left: 75%;
 }
 
 @keyframes floatHearts {
-    from { transform: translateY(0); opacity: 0.15; }
-    to { transform: translateY(-110vh); opacity: 0; }
+    from { transform: translateY(0) rotate(0deg); opacity: 0.08; }
+    to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }
 
 .container {
     position: relative;
     z-index: 1;
     text-align: center;
-    padding: 40px 20px;
+    padding: 60px 30px;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    border-radius: 32px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 h1 {
-    font-size: 2.4rem;
-    color: #d63384;
-    font-weight: 900;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
-    animation: wiggle 2s ease-in-out infinite;
+    font-size: 2.2rem;
+    color: #2d1b2e;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+    animation: glow 2.5s ease-in-out infinite;
 }
 
-@keyframes wiggle {
-    0%, 100% { transform: rotate(-1deg); }
-    50% { transform: rotate(1deg); }
+@keyframes glow {
+    0%, 100% { text-shadow: none; }
+    50% { text-shadow: 0 0 20px rgba(220, 104, 162, 0.3); }
 }
 
 .gif-container {
-    margin: 20px auto;
+    margin: 30px auto;
     display: flex;
     justify-content: center;
 }
 
 #cat-gif {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     object-fit: contain;
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
-    transition: opacity 0.3s ease;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.12));
+    transition: transform 0.3s ease;
+}
+
+#cat-gif:hover {
+    transform: scale(1.05);
 }
 
 .buttons {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 40px;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 
 #yes-btn {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
+    background: linear-gradient(135deg, #dc68a2 0%, #c9587a 100%);
     color: white;
     border: none;
-    border-radius: 16px;
-    font-size: 1.6rem;
-    font-weight: 900;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
     font-family: 'Nunito', sans-serif;
-    padding: 18px 45px;
+    padding: 16px 50px;
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.45);
-    letter-spacing: 1px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 10px 30px rgba(220, 104, 162, 0.3);
+    letter-spacing: 0.3px;
+    width: 100%;
+    max-width: 300px;
 }
 
 #yes-btn:hover {
-    transform: scale(1.06) translateY(-2px);
-    box-shadow: 0 10px 28px rgba(76, 175, 80, 0.55);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(220, 104, 162, 0.4);
 }
 
 #yes-btn:active {
-    transform: scale(0.98);
+    transform: translateY(-1px);
 }
 
 #no-btn {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    color: white;
-    border: none;
-    border-radius: 12px;
+    background: transparent;
+    color: #6b7280;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 600;
     font-family: 'Nunito', sans-serif;
-    padding: 12px 28px;
+    padding: 12px 32px;
     cursor: pointer;
-    transition: background 0.2s, left 0.25s ease, top 0.25s ease;
-    box-shadow: 0 4px 14px rgba(231, 76, 60, 0.4);
+    transition: all 0.2s;
+    box-shadow: none;
+    width: auto;
+    min-width: 80px;
 }
 
 #no-btn:hover {
-    background: linear-gradient(135deg, #c0392b, #a93226);
+    background: #f9fafb;
+    border-color: #d1d5db;
+    color: #4b5563;
 }
 
 
 #tease-toast {
-    margin-top: 14px;
-    font-size: 1rem;
-    color: #d63384;
-    font-weight: 700;
-    font-style: italic;
+    margin-top: 18px;
+    font-size: 0.95rem;
+    color: #c9587a;
+    font-weight: 600;
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
     transition: opacity 0.3s ease, transform 0.3s ease;
     min-height: 1.5rem;
+    letter-spacing: 0.2px;
 }
 
 #tease-toast.show {
@@ -157,50 +173,51 @@ h1 {
 /* Music toggle button */
 #music-toggle {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.85);
+    bottom: 30px;
+    right: 30px;
+    background: white;
     border: none;
     border-radius: 50%;
-    width: 52px;
-    height: 52px;
-    font-size: 1.4rem;
+    width: 56px;
+    height: 56px;
+    font-size: 1.3rem;
     cursor: pointer;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    transition: transform 0.2s;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
     z-index: 100;
 }
 
 #music-toggle:hover {
     transform: scale(1.1);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 /* Yes page specific */
 .yes-container h1.yes-title {
-    font-size: 2.8rem;
-    animation: bounceTitle 0.6s ease infinite alternate;
+    font-size: 2.5rem;
+    animation: bounceTitle 0.7s ease infinite alternate;
 }
 
 @keyframes bounceTitle {
-    from { transform: translateY(0) rotate(-1deg); }
-    to { transform: translateY(-12px) rotate(1deg); }
+    from { transform: translateY(0); }
+    to { transform: translateY(-15px); }
 }
 
 .yes-message {
-    font-size: 1.4rem;
-    color: #e91e8c;
+    font-size: 1.3rem;
+    color: #dc68a2;
     font-weight: 700;
     margin-top: 24px;
-    animation: fadeIn 1s ease 0.5s both;
+    animation: fadeIn 1s ease 0.4s both;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .yes-container #cat-gif {
-    width: 260px;
-    height: 260px;
+    width: 220px;
+    height: 220px;
 }
